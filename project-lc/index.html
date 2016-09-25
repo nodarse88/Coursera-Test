@@ -85,7 +85,7 @@
 				<div id="jumbotronCarousel" class="carousel slide" data-ride="carousel">
 				  <!-- Indicators -->
 				  <ol class="carousel-indicators">
-				    <li ng-repeat="img in carouselImages" 
+				    <li ng-repeat="item in carouselItems" 
 				    		data-target="#jumbotronCarousel"
 				    		data-slide-to="{{$index}}"
 				    		ng-class="{active : getActiveIndex($index)}"></li>

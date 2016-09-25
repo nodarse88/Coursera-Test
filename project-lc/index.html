@@ -1,12 +1,239 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="freemarketApp">
 <head>
-	<title>Project for LaunchCode Interview</title>
+	<meta charset=utf-8>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+
+	<title>Free Market</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">	
+
+	<style>
+		.container .jumbotron {
+			padding: 0;
+		}
+
+		#ios-badge {
+			background: url('app/images/icon/Download_on_the_App_Store_Badge_US-UK_135x40.png') no-repeat;
+		}
+
+		.desktop-sprite {
+			background: url('app/images/icon/navbar_sprite-580289297._V_.png') no-repeat;
+			display: inline-block;
+		}
+
+		.appstore-apple {
+			background-position: 0 -574px;
+			height: 39px;
+			width: 133px;0
+		}
+		.appstore-google {
+			background-position: 0 -617px;
+			height: 39px;
+			width: 115px;
+		}
+		.carousel-caption {
+			background-color: rgba(80,80,80,0.3);
+			border-radius: 10px;
+		}
+
+	</style>
 </head>
 <body>
 
-<h1>Project for LaunchCode Interview</h1>
-<p>This is a project in AngularJS</p>
+	<header>
+		<nav class="navbar navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#fm-navbar-collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+					<a class="navbar-brand" href="#">Free Market</a>
+				</div>
 
+				<div id="fm-navbar-collapse" class="collapse navbar-collapse">
+
+					<form class="navbar-form navbar-left">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Search">
+						</div>
+						<button ng-click="search()" class="btn btn-default">Search</button>
+					</form>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Register</a></li>
+						<li><a href="#">Login</a></li>
+						<li><a href="#">Sell</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<div class="main-content">
+		<div class="container">
+			<div class="jumbotron" ng-controller="JumboCarouselCtrl">
+				
+				<div id="jumbotronCarousel" class="carousel slide" data-ride="carousel">
+				  <!-- Indicators -->
+				  <ol class="carousel-indicators">
+				    <li ng-repeat="img in carouselImages" 
+				    		data-target="#jumbotronCarousel"
+				    		data-slide-to="{{$index}}"
+				    		ng-class="{active : getActiveIndex($index)}"></li>
+				  </ol>
+
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner" role="listbox">
+				    <div ng-repeat="item in carouselItems" class="item" ng-class="{active : getActiveIndex($index)}">
+				      <img ng-src="{{item.image}}">
+				      <div class="carousel-caption">
+				      <h2>{{item.title}}</h2>
+				      {{item.subtitle}}
+				      </div>
+				    </div>
+				  </div>
+
+				  <!-- Left and right controls -->
+				  <a class="left carousel-control" href="#jumbotronCarousel" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				  </a>
+				  <a class="right carousel-control" href="#jumbotronCarousel" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+				</div>
+
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="panel-heading text-center">
+						<h2>Find what you are looking for!</h2>
+						<p>There are millions of advertised products, the best brands and the lowest prices.</p>
+					</div>
+					<div class="row">
+						
+						<div class="col-sm-3">
+							
+						</div>
+						
+						<div class="col-sm-9">
+							<div class="container-fluid" ng-controller="CategoryCtrl">
+								<div class="row">
+
+									<div class="col-sm-6 col-md-4" ng-repeat="category in categories | orderBy : 'ranking' : true">
+										<span>{{ category.name }}</span>
+										<span class="label label-default">{{ category.ranking }}</span>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div id="register-reminder" class="panel-body">
+					<div class="text-center">
+						<span>No account yet?</span>
+						<button class="btn btn-primary">Register for free</button>
+					</div>
+					<hr>
+					
+					<div id="social" class="text-center">
+						<div class="fb-like" data-href="https://www.facebook.com/freemarketlc" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+					</div>
+					
+				</div>
+			</div>
+
+			<div class="row" id="features" ng-controller="FeaturesCtrl">
+				<div ng-repeat="feature in features" class="col-sm-6 col-md-4">
+					<div class="media">
+						<div class="media-left">
+							<img ng-src="{{feature.image}}">
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">{{feature.name}}</h4>
+							{{feature.info}}
+						</div>
+					</div>
+					<div class="text-right">
+						<a ng-href="{{feature.moreDetailsUrl}}">more details</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div id="app-download" class="panel-body">
+					<div class="row">
+						<div class="col-lg-9 col-md-10 col-sm-11 col-xs-12">
+							<div class="media">
+								<div class="media-body text-right">
+									<h4 class="media-heading">Buy and sell direct from your mobile!</h4>
+									Download for <strong>free</strong> the Free&nbsp;Market app for iOS and Android.
+								</div>
+								<div class="media-right">
+									<span class="desktop-sprite appstore-apple"></span>
+								</div>
+								<div class="media-right">
+									<span class="desktop-sprite appstore-google"></span>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div ng-controller="SponsoredLinksCtrl">
+				<h4>Featured Ads</h4>
+				<div class="row">
+					<div ng-repeat="link in links" class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+						<div class="text-center">
+							<img ng-src="{{link.image}}" width="150px" height="150px">
+						</div>
+						<div class="text-center">{{link.name}}</div>
+						<div class="text-center">{{link.price | currency}}</div>
+					</div>
+				</div>				
+			</div>
+			
+		</div><!-- end container -->
+	</div><!-- end main-content -->
+
+	
+
+	<footer class="panel-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-9">
+					<p>Copyright &copy; 2016 freemarketlc.com.</p>
+					<p>1320 S Dixie Hwy, Coral Gables, FL 33146</p>
+				</div>
+				<div class="col-sm-3">
+					<button style="width: 100%" class="btn btn-default btn-lg">
+					<span class="glyphicon glyphicon-phone" aria-hidden="true"></span> Download the free App!</button>
+				</div>
+			</div>
+		</div>
+	</footer>
+	
+	<script src="js/jquery-3.1.1.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="app.js"></script>
+	<script src="js/facebook.js"></script>
 </body>
 </html>

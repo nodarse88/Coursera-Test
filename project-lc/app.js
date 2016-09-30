@@ -41,11 +41,11 @@
 			templateUrl: 'views/mainCategories.html'
 		};
 	})
-	.controller('CategoryCtrl', function ($scope, $http, categoriesUrl) {
+	.controller('CategoryCtrl', function ($scope, $http, categoriesLocalUrl) {
 
 		$scope.categories = [];
 
-		$http.get(categoriesUrl)
+		$http.get(categoriesLocalUrl)
 		.success(function (data) {
 			$scope.categories = data;
 		})
@@ -54,11 +54,11 @@
 		});
 
 	})
-	.controller('FeaturesCtrl', function ($scope, $http, featuresUrl) {
+	.controller('FeaturesCtrl', function ($scope, $http, featuresLocalUrl) {
 
 		$scope.features = [];
 
-		$http.get(featuresUrl)
+		$http.get(featuresLocalUrl)
 		.success(function (data) {
 			$scope.features = data;
 		})

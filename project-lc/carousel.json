@@ -1,0 +1,17 @@
+[{ 
+	"image": "app/images/image01-1200x675.jpg", 
+	"title": "Kool Tak Foam", 
+	"subtitle": "Let the creative fun begin!" 
+}, 
+{ "image": "app/images/image02-1200x675.jpg", 
+	"title": "Google Nexus 7", 
+	"subtitle": "\"a mutual goal to make the most successful Android tablet ever and we are very confident in our ability to achieve that.\"" 
+},
+{ "image": "app/images/image03-1200x675.jpg", 
+	"title": "Google Home", 
+	"subtitle": "Google Home lets you control your video content, too."
+},
+{ "image": "app/images/image04-1200x675.jpg", 
+	"title": "Chromecast HDMI Streaming Media Player", 
+	"subtitle": "Stream online video, music and more to your TV using your smartphone, tablet, or laptop"
+}]

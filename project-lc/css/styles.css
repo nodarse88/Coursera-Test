@@ -1,0 +1,74 @@
+.container .jumbotron {
+	padding: 0;
+	/*overflow: hidden;
+	height: 500px;*/
+}
+
+#ios-badge {
+	background: url('../app/images/icon/Download_on_the_App_Store_Badge_US-UK_135x40.png') no-repeat;
+}
+
+.desktop-sprite {
+	background: url('../app/images/icon/navbar_sprite-580289297._V_.png') no-repeat;
+	display: inline-block;
+}
+
+.appstore-apple {
+	background-position: 0 -574px;
+	height: 39px;
+	width: 133px;0
+}
+.appstore-google {
+	background-position: 0 -617px;
+	height: 39px;
+	width: 115px;
+}
+.carousel-caption {
+	background-color: rgba(80,80,80,0.3);
+	border-radius: 10px;
+}
+
+.appstore-download-logo {
+	padding: 12px 0 8px;
+}
+
+.company-info-text {
+	text-align: center;
+}
+
+.appstore-download-text, .appstore-download-text h4 {
+	text-align: center;
+}
+.appstore-download-logo {
+	text-align: center;
+}
+
+#feature-block {
+	padding: 20px 30px;
+}
+
+/* Responsive Layout */
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+	
+	.company-info-text {
+		text-align: left;
+	}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+	.appstore-download-text, .appstore-download-text h4 {
+		text-align: right;
+	}
+	.appstore-download-logo {
+		text-align: left;
+	}
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}

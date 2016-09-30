@@ -1,0 +1,19 @@
+[{
+	"name":"Pay Online",
+	"info":"Use Market Payment, Free Market solution to pay securely with the payment method of your preference.",
+	"image":"app/images/pay-online.png",
+	"moreDetailsUrl":"#",
+	"id":"88914ec567e0a863"
+},{
+	"name":"Get the Product",
+	"info":"Calculate the shipping time and cost with Market Shipping. Pay with Market Payment, shipping is cheaper and you're protected!",
+	"image":"app/images/product-shipping.png",
+	"moreDetailsUrl":"#",
+	"id":"d62b68ff8fb509f9"
+},{
+	"name":"Protect your Purchase",
+	"info":"Get the product you are expecting or we refund the money. Pay through Pay Market and enjoy the tranquility of purchasing insurance.",
+	"image":"app/images/protect-purchase.png",
+	"moreDetailsUrl":"#",
+	"id":"ebd29f727a0349cc"
+}]

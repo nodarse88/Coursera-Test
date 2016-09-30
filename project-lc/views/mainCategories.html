@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="panel-heading text-center">
+			<h2>Find what you are looking for!</h2>
+			<p>There are millions of advertised products, the best brands and the lowest prices.</p>
+		</div>
+		<div class="row">
+
+			<hr class="visible-sm visible-xs" width="95%">
+			
+			<div class="col-md-3 text-center">
+				Still thinking what to put it here!!
+			</div>
+
+			<hr class="visible-sm visible-xs" width="95%">
+			
+			<div class="col-md-9">
+				<div class="container-fluid" ng-controller="CategoryCtrl">
+					<div class="row">
+
+						<div class="col-xs-6 col-sm-4 col-md-3 text-center" ng-repeat="category in categories | orderBy : 'ranking' : true"
+							style="
+								margin: 3px 0;
+							">
+							<span style="
+								background-color: rgba(100,100,100,0.3);
+								padding: 3px 5px;
+								border-radius: 2px;
+								width: 100%;
+								">{{ category.name }}</span>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,38 @@
+<div class="jumbotron" ng-controller="JumboCarouselCtrl">
+	<div id="jumbotronCarousel" class="carousel slide" data-ride="carousel">
+	  <!-- Indicators -->
+	  <ol class="carousel-indicators">
+	    <li ng-repeat="item in carouselItems" 
+	    		data-target="#jumbotronCarousel"
+	    		data-slide-to="{{$index}}"
+	    		ng-class="{active : getActiveIndex($index)}"></li>
+	  </ol>
+
+	  <!-- Wrapper for slides -->
+	  <div class="carousel-inner" role="listbox">
+	    <div ng-repeat="item in carouselItems" class="item" ng-class="{active : getActiveIndex($index)}">
+	      <img ng-src="{{item.image}}">
+	      <div class="carousel-caption">
+	      
+	      <h3 class="hidden-xs hidden-sm carousel-caption-title">{{item.title}}</h3>
+	      
+	      <h4 class="visible-sm visible-xs carousel-caption-title">{{item.title}}</h4>
+	      <span class="carousel-caption-subtitle">
+	      	{{item.subtitle}}
+	      </span>
+	      </div>
+	    </div>
+	  </div>
+
+	  <!-- Left and right controls -->
+	  <a class="left carousel-control" href="#jumbotronCarousel" role="button" data-slide="prev">
+	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	    <span class="sr-only">Previous</span>
+	  </a>
+	  <a class="right carousel-control" href="#jumbotronCarousel" role="button" data-slide="next">
+	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	    <span class="sr-only">Next</span>
+	  </a>
+	</div>
+
+</div>

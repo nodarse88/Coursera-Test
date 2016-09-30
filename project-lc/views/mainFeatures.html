@@ -1,0 +1,16 @@
+<div class="row" id="features" ng-controller="FeaturesCtrl">
+	<div id="feature-block" ng-repeat="feature in features" class="col-sm-6 col-md-4">
+		<div class="media">
+			<div class="media-left">
+				<img ng-src="{{feature.image}}">
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading">{{feature.name}}</h4>
+				{{feature.info}}
+			</div>
+		</div>
+		<div class="text-right">
+			<a ng-href="{{feature.moreDetailsUrl}}">more details</a>
+		</div>
+	</div>
+</div>

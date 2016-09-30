@@ -1,7 +1,46 @@
 (function () {
+
 	angular.module('freemarketApp', [])
 	.constant('categoriesUrl', 'http://192.168.1.100:5500/categories')
+	.constant('categoriesLocalUrl', 'categories.json')	
 	.constant('featuresUrl', 'http://192.168.1.100:5500/shopping-features')
+	.constant('featuresLocalUrl', 'shopping-features.json')
+	.directive('navigationBar', function () {
+		return {
+			restrict: 'E',
+			templateUrl: 'views/navigationBar.html',
+		};
+	})
+	.directive('footerBar', function () {
+		return {
+			restrict: 'E',
+			templateUrl: 'views/footerBar.html'
+		};
+	})
+	.directive('carouselJumbotron', function () {
+		return {
+			restrict: 'E',
+			templateUrl: 'views/carouselJumbotron.html'
+		};
+	})
+	.directive('downloadApp', function () {
+		return {
+			restrict: 'E',
+			templateUrl: 'views/downloadApp.html'
+		};
+	})
+	.directive('mainFeatures', function () {
+		return {
+			restrict: 'E',
+			templateUrl: 'views/mainFeatures.html'
+		};
+	})
+	.directive('mainCategories', function () {
+		return {
+			restrict: 'E',
+			templateUrl: 'views/mainCategories.html'
+		};
+	})
 	.controller('CategoryCtrl', function ($scope, $http, categoriesUrl) {
 
 		$scope.categories = [];
@@ -28,56 +67,29 @@
 		});
 
 	})
-	.controller('SponsoredLinksCtrl', function ($scope) {
-		$scope.links = [{
-			name: "Item1",
-			price: 10.99,
-			image: 'app/images/sell01-350x350.jpg'
-		},{
-			name: "Item2",
-			price: 10.99,
-			image: 'app/images/sell02-350x350.jpg'
-		},{
-			name: "Item3",
-			price: 10.99,
-			image: 'app/images/sell03-350x350.jpg'
-		},{
-			name: "Item4",
-			price: 10.99,
-			image: 'app/images/sell04-350x350.jpg'
-		},{
-			name: "Item5",
-			price: 10.99,
-			image: 'app/images/sell01-350x350.jpg'
-		},{
-			name: "Item6",
-			price: 10.99,
-			image: 'app/images/sell02-350x350.jpg'
-		},{
-			name: "Item7",
-			price: 10.99,
-			image: 'app/images/sell03-350x350.jpg'
-		},{
-			name: "Item8",
-			price: 10.99,
-			image: 'app/images/sell04-350x350.jpg'
-		}];
+	.controller('FeaturedAdsCtrl', function ($http, $scope) {
+		$scope.links = [];
+
+		$http.get('./links.json')
+		.success(function (data) {
+			$scope.links = data;
+		})
+		.error(function (error) {
+			$scope.linksError = error;
+		});
 	})
-	.controller('JumboCarouselCtrl', function ($scope) {
+	.controller('JumboCarouselCtrl', function ($http, $scope) {
 		$scope.carouselInterval = 3000;
-		$scope.carouselItems = [
-			{ image: 'app/images/image01-1200x675.jpg', 
-				title: 'Kool Tak Foam', 
-				subtitle: 'Let the creative fun begin!' }, 
-			{ image: 'app/images/image02-1200x675.jpg', 
-				title: 'Google Nexus 7', 
-				subtitle: '"a mutual goal to make the most successful Android tablet ever and we are very confident in our ability to achieve that."' },
-			{ image: 'app/images/image03-1200x675.jpg', 
-				title: 'Google Home', 
-				subtitle: 'Google Home lets you control your video content, too.' },
-			{ image: 'app/images/image04-1200x675.jpg', 
-				title: 'Chromecast HDMI Streaming Media Player', 
-				subtitle: 'Stream online video, music and more to your TV using your smartphone, tablet, or laptop' }];
+		$scope.carouselItems = [];
+
+		$http.get('./carousel.json')
+		.success(function (data) {
+			$scope.carouselItems = data;
+		})
+		.error(function (error) {
+			$scope.carouselItemsError = error;
+		});
+		
 		$scope.activeImage = 0;
 
 		$scope.getActiveIndex = function (index) {
